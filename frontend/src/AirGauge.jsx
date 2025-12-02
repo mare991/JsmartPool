@@ -122,9 +122,14 @@ export default function AirGauge({
 
   return (
     <div className="air-gauge-container">
-      {/* Temperature Status Message and pH Level */}
+      {/* pH Level - Positioned at top right corner */}
+      <div className="ph-level-status">
+        <div className="ph-level-label-status">pH Level</div>
+        <div className="ph-level-value-status">{phLevel}</div>
+      </div>
+
+      {/* Temperature Status Message */}
       <div className="top-status-bar">
-        {/* Temperature Status Message */}
         <div className="temperature-status">
           {isTooHot && (
             <div className="status-message too-hot">
@@ -151,12 +156,6 @@ export default function AirGauge({
               Perfect temperature! Ideal: {poolType.ideal}°C (Range: {poolType.min}-{poolType.max}°C)
             </div>
           )}
-        </div>
-
-        {/* pH Level - Separate, positioned at right margin */}
-        <div className="ph-level-status">
-          <div className="ph-level-label-status">pH Level</div>
-          <div className="ph-level-value-status">{phLevel}</div>
         </div>
       </div>
 

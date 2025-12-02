@@ -1,0 +1,65 @@
+.jsmartpool-logo {
+    top: 20px;
+  position: absolute;
+  left: 10px;
+  z-index: 1000;
+  padding: 15px 20px;
+  border-radius: 8px;
+  
+
+}
+
+.logo-image {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.logo-main-text {
+  paint-order: stroke fill;
+}
+
+.logo-tagline-text {
+  paint-order: stroke fill;
+}
+
+.droplet-group {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .jsmartpool-logo {
+    top: 10px;
+    left: 10px;
+    padding: 10px 15px;
+  }
+  
+  .logo-image {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jsmartpool-logo {
+    top: 8px;
+    left: 8px;
+    padding: 8px 12px;
+  }
+  
+  .logo-image {
+    width: 120px;
+  }
+}
+
+
+

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import AirGauge from './AirGauge';
 import api from './services/api';
+import JSmartPoolLogo from './JSmartPoolLogo';
 
 function App() {
   const [temp, setTemp] = useState(28);
@@ -74,8 +75,10 @@ function App() {
       width: '100%',
       height: '100vh',
       margin: 0,
-      padding: 0
+      padding: 0,
+      position: 'relative'
     }}>
+      <JSmartPoolLogo />
       <AirGauge 
         temp={temp} 
         phLevel={phLevel}

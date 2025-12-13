@@ -1,16 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
 
 # Store latest pool values (defaults)
 pool_data = {
-    "Tmer": 0.0,
-    "Tzad": 0.0,
-    "pHmer": 0.0,
-    "Temp": 0.0,
-    "orp": 0.0
+    "Tmer": 20.0,
+    "Tzad": 20.0,
+    "pHmer": 23.0,
+    "Temp": 23.0,
+    "orp": 22.0
 }
 
 @app.route('/')
@@ -52,5 +52,5 @@ def update_pool_data():
     }), 200
 
 
-if _name_ == "_main_":
-    app.run(host='0.0.0.0', port=5000, debug=True
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,0 +1,65 @@
+.navigation-bar {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  width: 100%;
+}
+
+/* Mobile layout - position tabs to the right, same row as logo, scale with monitor-tab */
+@media (max-width: 768px) {
+  .navigation-bar {
+    top: 30px;
+    left: auto;
+    right: 20px;
+    transform: none;
+    justify-content: flex-end;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation-bar {
+    top: 25px;
+    right: 15px;
+  }
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  color: #9CA3AF;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-tab:hover {
+  color: #60A5FA;
+}
+
+.nav-tab.active {
+  color: #00E5FF;
+  border-bottom-color: #00E5FF;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}

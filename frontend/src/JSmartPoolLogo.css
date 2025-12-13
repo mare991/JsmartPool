@@ -1,65 +1,64 @@
 .jsmartpool-logo {
-    top: 20px;
   position: absolute;
-  left: 10px;
+  top: 30px;
+  left: 50px;
   z-index: 1000;
-  padding: 15px 20px;
-  border-radius: 8px;
-  
-
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
 }
 
 .logo-image {
-  width: 160px;
   height: auto;
+  width: auto;
+  max-height: 60px;
   display: block;
+  background: transparent;
 }
 
-.logo-main-text {
-  paint-order: stroke fill;
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.logo-tagline-text {
-  paint-order: stroke fill;
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.droplet-group {
-  animation: float 3s ease-in-out infinite;
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #9CA3AF;
+  font-family: 'Poppins', sans-serif;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  display: inline-block;
 }
 
-/* Responsive adjustments */
+/* Mobile responsive adjustments - maintain desktop appearance */
 @media (max-width: 768px) {
   .jsmartpool-logo {
-    top: 10px;
-    left: 10px;
-    padding: 10px 15px;
-  }
-  
-  .logo-image {
-    width: 80px;
+    top: 30px;
+    left: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .jsmartpool-logo {
-    top: 8px;
-    left: 8px;
-    padding: 8px 12px;
-  }
-  
-  .logo-image {
-    width: 120px;
+    top: 25px;
+    left: 15px;
   }
 }
-
-
-

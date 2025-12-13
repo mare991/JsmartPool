@@ -4,11 +4,13 @@ import './JSmartPoolLogo.css';
 const JSmartPoolLogo = ({ className = '' }) => {
   return (
     <div className={`jsmartpool-logo ${className}`}>
-      <img 
-        src="/logo4.png" 
-        alt="JSmartPool Logo" 
-        className="logo-image"
-      />
+      <div className="logo-text-container">
+        <div className="logo-text">JSmartPool</div>
+        <div className="system-status">
+          <span className="status-dot"></span>
+          System Online
+        </div>
+      </div>
     </div>
   );
 };

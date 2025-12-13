@@ -9,7 +9,7 @@ CORS(app)
 pool_data = {
     "Tmer": 20.0,
     "Tzad": 20.0,
-    "pHmer": 23.0,
+    "pHmer": 29.0,
     "Temp": 23.0,
     "orp": 22.0
 }

@@ -1,7 +1,7 @@
 // API service for connecting to Flask backend
 // Update the baseURL if your Flask server runs on a different port or host
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || '';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://168.119.175.54:5000';
 
 /**
  * Generic fetch wrapper for API calls

@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import threading  # for locking
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +14,9 @@ pool_data = {
     "orp": 22.0
 }
 
+# Lock for thread-safe updates
+pool_lock = threading.Lock()
+
 @app.route('/')
 def home():
     return "Hello from Flask!"
@@ -22,7 +26,9 @@ def home():
 # -----------------------------
 @app.route('/api/jsmartPoolData', methods=['GET'])
 def get_pool_data():
-    return jsonify(pool_data), 200
+    with pool_lock:  # ensure consistent read if needed
+        data_copy = pool_data.copy()
+    return jsonify(data_copy), 200
 
 
 # -----------------------------
@@ -34,22 +40,18 @@ def update_pool_data():
     if not data:
         return jsonify({"error": "No JSON provided"}), 400
 
-    # Validate and update floats
-    for key in pool_data.keys():
-        if key in data:
-            try:
-                pool_data[key] = float(data[key])
-            except (TypeError, ValueError):
-                return jsonify({
-                    "error": f"{key} must be a float"
-                }), 400
+    with pool_lock:  # lock during update
+        for key in pool_data.keys():
+            if key in data:
+                try:
+                    pool_data[key] = float(data[key])
+                except (TypeError, ValueError):
+                    return jsonify({"error": f"{key} must be a float"}), 400
 
-    print("Updated pool data:", pool_data)
+        print("Updated pool data:", pool_data)
+        response = {"status": "success", **pool_data}
 
-    return jsonify({
-        "status": "success",
-        **pool_data
-    }), 200
+    return jsonify(response), 200
 
 
 if __name__ == "__main__":

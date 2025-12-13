@@ -1,53 +1,56 @@
-from flask import Flask,request,jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(_name_)
 CORS(app)
 
-# Store the latest temperature and pH values (initialize with default values)
+# Store latest pool values (defaults)
 pool_data = {
-    "temperature": 28,
-    "ph": 6.89
+    "Tmer": 0.0,
+    "Tzad": 0.0,
+    "pHmer": 0.0,
+    "Temp": 0.0,
+    "orp": 0.0
 }
 
 @app.route('/')
 def home():
     return "Hello from Flask!"
 
-@app.route('/api/greet')
-def greet():
-    return {"message": "Hello from /api/greet!"}
+# -----------------------------
+# GET endpoint (read values)
+# -----------------------------
+@app.route('/api/jsmartPoolData', methods=['GET'])
+def get_pool_data():
+    return jsonify(pool_data), 200
 
-@app.route('/api/jsmartpoolData',methods=['GET','POST'])
-def jsmartpoolData():
-    if request.method=='GET':
-        # Return the stored temperature and pH values (always return consistent structure)
-        return jsonify({
-            "temperature": pool_data["temperature"],
-            "ph": pool_data["ph"]
-        }), 200
-    
-    # Handle POST request
-    data=request.get_json(silent=True)
+
+# -----------------------------
+# POST endpoint (update values)
+# -----------------------------
+@app.route('/api/jsmartPoolUpdate', methods=['POST'])
+def update_pool_data():
+    data = request.get_json(silent=True)
     if not data:
-        return jsonify({"error":"No JSON provided"}),400
+        return jsonify({"error": "No JSON provided"}), 400
 
-    temperature=data.get("temperature")
-    ph=data.get("ph")
+    # Validate and update floats
+    for key in pool_data.keys():
+        if key in data:
+            try:
+                pool_data[key] = float(data[key])
+            except (TypeError, ValueError):
+                return jsonify({
+                    "error": f"{key} must be a float"
+                }), 400
 
-    if temperature is None or ph is None:
-        return jsonify({"error":"Missing temperature or ph field"}),400
-
-    # Store the values
-    pool_data["temperature"] = temperature
-    pool_data["ph"] = ph
-
-    print("Received data:",data)
+    print("Updated pool data:", pool_data)
 
     return jsonify({
-        "status":"success",
-        "temperature":temperature,
-        "ph":ph
+        "status": "success",
+        **pool_data
     }), 200
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
+
+if _name_ == "_main_":
+    app.run(host='0.0.0.0', port=5000, debug=True

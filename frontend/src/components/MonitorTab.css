@@ -1,16 +1,21 @@
 .monitor-tab {
-  padding-top: 140px;
+  padding-top: 120px;
+  padding-bottom: 40px;
   min-height: 100vh;
   background-color: #1A202C;
   color: #FFFFFF;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   width: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .target-temperature {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .target-label {
@@ -385,12 +390,14 @@
 
 @media (max-width: 768px) {
   .monitor-tab {
-    padding-top: 80px;
+    padding-top: 240px;
     padding-bottom: 100px;
+    justify-content: flex-start;
   }
   
   .target-temperature {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 0;
   }
   
   .monitor-content {
@@ -404,6 +411,7 @@
     max-width: 100%;
     transform: scale(0.68);
     transform-origin: top center;
+    margin-top: 20px;
   }
   
   .left-info {
@@ -434,13 +442,19 @@
 
 @media (max-width: 480px) {
   .monitor-tab {
-    padding-top: 70px;
+    padding-top: 230px;
     padding-bottom: 90px;
+    justify-content: flex-start;
+  }
+  
+  .target-temperature {
+    margin-bottom: 25px;
   }
   
   .monitor-content {
     gap: 6px;
     transform: scale(0.58);
+    margin-top: 15px;
   }
   
   .left-info,

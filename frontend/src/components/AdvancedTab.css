@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
 }
 
 .readings-section,
@@ -84,7 +85,7 @@
 }
 
 /* Responsive design - maintain desktop layout, scale proportionally */
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 769px) {
   .advanced-tab {
     transform: scale(0.9);
     transform-origin: top center;
@@ -92,21 +93,31 @@
   }
 }
 
+/* Mobile - full width content */
 @media (max-width: 768px) {
   .advanced-tab {
-    transform: scale(0.65);
-    transform-origin: top center;
+    padding-top: 240px;
+    padding-bottom: 100px;
     width: 100%;
-    padding-top: 100px;
+  }
+  
+  .advanced-content {
+    max-width: 100%;
+    padding: 0 20px;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .advanced-tab {
-    transform: scale(0.55);
-    transform-origin: top center;
+    padding-top: 230px;
+    padding-bottom: 90px;
     width: 100%;
-    padding-top: 80px;
+  }
+  
+  .advanced-content {
+    padding: 0 15px;
+    gap: 24px;
   }
 }
 

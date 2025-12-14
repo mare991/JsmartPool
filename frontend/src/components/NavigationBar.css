@@ -10,22 +10,24 @@
   width: 100%;
 }
 
-/* Mobile layout - position tabs to the right, same row as logo, scale with monitor-tab */
+/* Mobile layout - center tabs, lower position to avoid logo overlap */
 @media (max-width: 768px) {
   .navigation-bar {
-    top: 30px;
-    left: auto;
-    right: 20px;
-    transform: none;
-    justify-content: flex-end;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
     width: auto;
   }
 }
 
 @media (max-width: 480px) {
   .navigation-bar {
-    top: 25px;
-    right: 15px;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    width: auto;
   }
 }
 

@@ -22,7 +22,8 @@ export default function AirGauge({
   onTempChange = () => {}
 }) {
   const radius = (size - stroke) / 2;
-  const circumference = 2 * Math.PI * radius;
+  const circumference = 2 * Math.PI * radius+34;
+  const Paja=2;
 
   // Get selected pool type
   const poolType = poolTypes.find(p => p.id === selectedPoolType) || poolTypes[0];
